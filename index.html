@@ -5,85 +5,109 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>VIP Experience | Valencia Basket</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+
 <style>
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-body {
-    font-family: 'Montserrat', sans-serif;
-    background: linear-gradient(135deg, #ff7a00, #1c1c1c);
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
+body{
+    font-family:'Montserrat', sans-serif;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:white;
+
+    /* Degradado corporativo */
+    background: linear-gradient(135deg, #ff7a00 0%, #1a1a1f 60%, #0b0b0f 100%);
 }
 
-.container {
-    text-align: center;
-    max-width: 900px;
-    padding: 40px;
+.container{
+    text-align:center;
+    max-width:1000px;
+    padding:60px;
 }
 
-h1 {
-    font-size: 3rem;
-    font-weight: 800;
-    margin-bottom: 20px;
+h1{
+    font-size:2.8rem;
+    font-weight:800;
+    letter-spacing:1px;
 }
 
-p {
-    font-size: 1.2rem;
-    margin-bottom: 50px;
-    opacity: 0.9;
+p{
+    font-size:1.15rem;
+    margin-top:15px;
+    margin-bottom:50px;
+    opacity:0.9;
 }
 
-.buttons {
-    display: flex;
-    gap: 40px;
-    justify-content: center;
-    flex-wrap: wrap;
+.buttons{
+    display:flex;
+    gap:25px;
+    justify-content:center;
+    flex-wrap:wrap;
 }
 
-.btn {
-    text-decoration: none;
-    padding: 20px 40px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    border-radius: 12px;
+.btn{
+    text-decoration:none;
+    padding:22px 38px;
+    font-size:1.1rem;
+    font-weight:700;
+    border-radius:16px;
     transition: all 0.3s ease;
-    min-width: 260px;
+    min-width:260px;
+    text-align:center;
+    color:white;
+    box-shadow:0 15px 35px rgba(0,0,0,0.4);
 }
 
-.btn-networking {
-    background-color: white;
-    color: #ff7a00;
+/* Tonos distintos de naranja */
+
+.btn-networking{
+    background: linear-gradient(135deg, #ff6a00, #ff8c1a);
 }
 
-.btn-networking:hover {
-    background-color: #ffe5cc;
-    transform: translateY(-5px);
+.btn-networking:hover{
+    transform:translateY(-6px);
+    box-shadow:0 25px 50px rgba(255,106,0,0.5);
 }
 
-.btn-highlights {
-    background-color: #1c1c1c;
-    border: 2px solid white;
-    color: white;
+.btn-highlights{
+    background: linear-gradient(135deg, #ff7f1f, #ff9f40);
 }
 
-.btn-highlights:hover {
-    background-color: white;
-    color: #1c1c1c;
-    transform: translateY(-5px);
+.btn-highlights:hover{
+    transform:translateY(-6px);
+    box-shadow:0 25px 50px rgba(255,127,31,0.5);
 }
 
-.footer {
-    margin-top: 60px;
-    font-size: 0.9rem;
-    opacity: 0.7;
+.btn-business{
+    background: linear-gradient(135deg, #ff5500, #ff7300);
+}
+
+.btn-business:hover{
+    transform:translateY(-6px);
+    box-shadow:0 25px 50px rgba(255,85,0,0.5);
+}
+
+.footer{
+    margin-top:60px;
+    font-size:0.9rem;
+    opacity:0.75;
+}
+
+@media(max-width:768px){
+    h1{
+        font-size:2rem;
+    }
+
+    .btn{
+        min-width:220px;
+        padding:18px 25px;
+    }
 }
 
 </style>
@@ -101,6 +125,10 @@ p {
 
         <a href="#" class="btn btn-highlights">
             Resumen del Partido
+        </a>
+
+        <a href="https://www.valenciabasket.com/ca/business-club" target="_blank" class="btn btn-business">
+            Business Club
         </a>
     </div>
 
