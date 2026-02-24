@@ -14,11 +14,9 @@
     --orange-3:#ff5500;
     --black-1:#0b0b0f;
     --black-2:#14141a;
-    --white: #ffffff;
+    --white:#ffffff;
     --muted: rgba(255,255,255,.82);
     --muted2: rgba(255,255,255,.65);
-    --glass: rgba(0,0,0,.35);
-    --border: rgba(255,255,255,.14);
     --shadow: 0 18px 45px rgba(0,0,0,.45);
   }
 
@@ -30,6 +28,7 @@
     overflow-x:hidden;
   }
 
+  /* Views */
   .view{
     min-height:100vh;
     display:flex;
@@ -87,14 +86,13 @@
     opacity:.75;
   }
 
-  /* ---------- DASHBOARD ---------- */
-  .dash-wrap{
+  /* ---------- TOPBAR (shared) ---------- */
+  .wrap{
     width:min(1200px, 94vw);
     display:flex;
     flex-direction:column;
     gap:18px;
   }
-
   .topbar{
     display:flex;
     align-items:center;
@@ -107,12 +105,11 @@
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
   }
-
   .brand{
     display:flex;
     align-items:center;
     gap:12px;
-    min-width: 230px;
+    min-width: 240px;
   }
   .logo{
     width:38px;
@@ -124,12 +121,9 @@
     justify-content:center;
     overflow:hidden;
     border: 1px solid rgba(255,255,255,.16);
+    font-weight:900;
   }
-  .logo img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-  }
+  .logo img{ width:100%; height:100%; object-fit:cover; }
   .brand h2{
     font-size:1rem;
     font-weight:800;
@@ -146,12 +140,12 @@
     letter-spacing:.2px;
     text-transform:none;
   }
-
   .top-actions{
     display:flex;
     gap:10px;
     flex-wrap:wrap;
     justify-content:flex-end;
+    align-items:center;
   }
   .chip{
     padding:10px 12px;
@@ -161,6 +155,7 @@
     color: var(--muted);
     font-weight:700;
     font-size:.88rem;
+    white-space:nowrap;
   }
   .back{
     cursor:pointer;
@@ -175,12 +170,12 @@
   }
   .back:hover{ transform: translateY(-2px); background: rgba(0,0,0,.45); }
 
+  /* ---------- DASHBOARD ---------- */
   .grid{
     display:grid;
     grid-template-columns: 1.25fr .75fr;
     gap:16px;
   }
-
   .card{
     border-radius:22px;
     background: rgba(0,0,0,.32);
@@ -190,7 +185,6 @@
     -webkit-backdrop-filter: blur(10px);
     overflow:hidden;
   }
-
   .card-h{
     padding:16px 18px 10px;
     display:flex;
@@ -203,13 +197,9 @@
     font-weight:800;
     letter-spacing:.4px;
   }
-  .card-h small{
-    color: var(--muted2);
-    font-weight:700;
-  }
+  .card-h small{ color: var(--muted2); font-weight:700; }
   .card-b{ padding: 14px 18px 18px; }
 
-  /* Scoreboard */
   .scoreboard{
     display:flex;
     align-items:center;
@@ -223,16 +213,8 @@
     gap:6px;
     min-width: 180px;
   }
-  .team .name{
-    font-weight:800;
-    letter-spacing:.2px;
-    color: var(--muted);
-  }
-  .team .meta{
-    font-size:.9rem;
-    color: var(--muted2);
-    font-weight:600;
-  }
+  .team .name{ font-weight:800; letter-spacing:.2px; color: var(--muted); }
+  .team .meta{ font-size:.9rem; color: var(--muted2); font-weight:600; }
   .score{
     display:flex;
     align-items:baseline;
@@ -240,14 +222,9 @@
     font-weight:900;
     letter-spacing:1px;
   }
-  .score .big{
-    font-size:3.1rem;
-    line-height:1;
-  }
-  .score .sep{
-    font-size:1.7rem;
-    opacity:.8;
-  }
+  .score .big{ font-size:3.1rem; line-height:1; }
+  .score .sep{ font-size:1.7rem; opacity:.8; }
+
   .win-pill{
     margin-top:10px;
     display:inline-flex;
@@ -260,8 +237,6 @@
     font-weight:900;
     letter-spacing:.4px;
   }
-
-  /* Quarter table */
   .quarters{
     width:100%;
     border-collapse:collapse;
@@ -279,24 +254,11 @@
     background: rgba(255,255,255,.06);
     color: var(--muted);
   }
-  .quarters tbody tr{
-    background: rgba(0,0,0,.18);
-  }
-  .quarters tbody tr + tr td{
-    border-top:1px solid rgba(255,255,255,.08);
-  }
-  .tag-home{
-    text-align:left !important;
-    color: var(--muted);
-    font-weight:900;
-  }
-  .tag-away{
-    text-align:left !important;
-    color: rgba(255,255,255,.78);
-    font-weight:900;
-  }
+  .quarters tbody tr{ background: rgba(0,0,0,.18); }
+  .quarters tbody tr + tr td{ border-top:1px solid rgba(255,255,255,.08); }
+  .tag-home{ text-align:left !important; color: var(--muted); font-weight:900; }
+  .tag-away{ text-align:left !important; color: rgba(255,255,255,.78); font-weight:900; }
 
-  /* Stat tiles */
   .tiles{
     display:grid;
     grid-template-columns: repeat(3, 1fr);
@@ -315,42 +277,23 @@
     letter-spacing:.3px;
     text-transform:uppercase;
   }
-  .tile .v{
-    margin-top:8px;
-    font-size:1.55rem;
-    font-weight:900;
-  }
-  .tile .sub{
-    margin-top:6px;
-    font-size:.85rem;
-    color: rgba(255,255,255,.70);
-    font-weight:700;
-  }
+  .tile .v{ margin-top:8px; font-size:1.55rem; font-weight:900; }
+  .tile .sub{ margin-top:6px; font-size:.85rem; color: rgba(255,255,255,.70); font-weight:700; }
 
-  /* Bars */
-  .bars{
-    display:flex;
-    flex-direction:column;
-    gap:12px;
-  }
+  .bars{ display:flex; flex-direction:column; gap:12px; }
   .bar{
     display:grid;
     grid-template-columns: 110px 1fr 70px;
     gap:10px;
     align-items:center;
   }
-  .bar label{
-    color: var(--muted2);
-    font-weight:800;
-    font-size:.9rem;
-  }
+  .bar label{ color: var(--muted2); font-weight:800; font-size:.9rem; }
   .track{
     height:12px;
     border-radius:999px;
     background: rgba(255,255,255,.10);
     border: 1px solid rgba(255,255,255,.10);
     overflow:hidden;
-    position:relative;
   }
   .fill{
     height:100%;
@@ -361,19 +304,9 @@
   }
   .fill.alt{ background: linear-gradient(135deg, var(--orange-2), #ffb15a); }
   .fill.alt2{ background: linear-gradient(135deg, var(--orange-3), #ff8a2a); }
+  .bar span{ text-align:right; font-weight:900; color: var(--muted); }
 
-  .bar span{
-    text-align:right;
-    font-weight:900;
-    color: var(--muted);
-  }
-
-  /* Leaders */
-  .leaders{
-    display:flex;
-    flex-direction:column;
-    gap:10px;
-  }
+  .leaders{ display:flex; flex-direction:column; gap:10px; }
   .leader{
     display:flex;
     align-items:center;
@@ -384,25 +317,11 @@
     background: rgba(255,255,255,.06);
     border:1px solid rgba(255,255,255,.10);
   }
-  .leader .who{
-    display:flex;
-    flex-direction:column;
-    gap:4px;
-  }
-  .leader .who b{
-    font-weight:900;
-    letter-spacing:.2px;
-  }
-  .leader .who small{
-    color: var(--muted2);
-    font-weight:700;
-  }
-  .leader .num{
-    font-weight:900;
-    font-size:1.35rem;
-  }
+  .leader .who{ display:flex; flex-direction:column; gap:4px; }
+  .leader .who b{ font-weight:900; letter-spacing:.2px; }
+  .leader .who small{ color: var(--muted2); font-weight:700; }
+  .leader .num{ font-weight:900; font-size:1.35rem; }
 
-  /* Mini shot chart fake */
   .shot{
     display:grid;
     grid-template-columns: 1fr 1fr;
@@ -439,7 +358,6 @@
     box-shadow:none;
     opacity:.85;
   }
-
   .note{
     border-radius:18px;
     background: rgba(0,0,0,.20);
@@ -451,11 +369,182 @@
   }
   .note b{ color:#fff; }
 
+  /* ---------- NETWORKING (simple + sidebar) ---------- */
+  .net-layout{
+    display:grid;
+    grid-template-columns: 1fr 320px;
+    gap:16px;
+  }
+
+  .net-card-wrap{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding: 18px;
+  }
+
+  .net-card{
+    width:min(520px, 96%);
+    height: 520px;
+    background:#111;               /* sólido, no transparente */
+    border-radius:28px;
+    padding:28px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    box-shadow: 0 24px 70px rgba(0,0,0,.55);
+    border: 1px solid rgba(255,255,255,.10);
+    transition: transform .28s ease, opacity .28s ease;
+  }
+
+  .net-head{
+    display:flex;
+    align-items:center;
+    gap:14px;
+  }
+  .net-avatar{
+    width:60px;
+    height:60px;
+    border-radius:18px;
+    background: linear-gradient(135deg, var(--orange-1), #ff8c1a);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:900;
+    font-size:1.15rem;
+    letter-spacing:.5px;
+    color:#fff;
+  }
+  .net-name{
+    font-weight:900;
+    font-size:1.12rem;
+  }
+  .net-company{
+    margin-top:4px;
+    font-weight:700;
+    color: rgba(255,255,255,.65);
+    font-size:.95rem;
+  }
+
+  .net-focus{
+    margin-top:18px;
+    font-weight:700;
+    color: rgba(255,255,255,.86);
+    line-height:1.45;
+  }
+  .net-meta{
+    margin-top:14px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+  .net-pill{
+    padding:10px 12px;
+    border-radius:999px;
+    background: #1b1b1b;
+    border: 1px solid rgba(255,255,255,.10);
+    color: rgba(255,255,255,.78);
+    font-weight:800;
+    font-size:.86rem;
+  }
+
+  .net-actions{
+    display:flex;
+    gap:10px;
+  }
+  .net-btn{
+    flex:1;
+    cursor:pointer;
+    border:none;
+    padding:14px 16px;
+    border-radius:16px;
+    font-weight:900;
+    font-size:.96rem;
+    transition: transform .2s ease, filter .2s ease;
+  }
+  .net-btn:hover{ transform: translateY(-2px); }
+  .net-pass{
+    background:#1f1f1f;
+    color:#fff;
+    border:1px solid rgba(255,255,255,.12);
+  }
+  .net-connect{
+    background: linear-gradient(135deg, var(--orange-1), #ff8c1a);
+    color:#fff;
+  }
+
+  .side{
+    border-radius:22px;
+    background:#111;               /* sólido */
+    border: 1px solid rgba(255,255,255,.10);
+    box-shadow: 0 18px 45px rgba(0,0,0,.35);
+    overflow:hidden;
+    height: 100%;
+    min-height: 520px;
+  }
+  .side-h{
+    padding:16px 16px 10px;
+    border-bottom:1px solid rgba(255,255,255,.08);
+  }
+  .side-h h3{
+    font-size:1rem;
+    font-weight:900;
+    letter-spacing:.3px;
+    opacity:.95;
+  }
+  .side-h small{
+    display:block;
+    margin-top:6px;
+    color: rgba(255,255,255,.65);
+    font-weight:700;
+  }
+  .side-b{
+    padding:12px 16px 16px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    max-height: 520px;
+    overflow:auto;
+  }
+  .saved{
+    background:#1c1c1c;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:16px;
+    padding:12px 12px;
+  }
+  .saved b{
+    display:block;
+    font-weight:900;
+    font-size:.95rem;
+  }
+  .saved span{
+    display:block;
+    margin-top:4px;
+    font-weight:700;
+    color: rgba(255,255,255,.65);
+    font-size:.86rem;
+  }
+
+  .empty{
+    padding:14px;
+    border-radius:16px;
+    background:#1c1c1c;
+    border:1px solid rgba(255,255,255,.08);
+    color: rgba(255,255,255,.72);
+    font-weight:700;
+    line-height:1.35;
+  }
+
+  @media (max-width: 1050px){
+    .net-layout{ grid-template-columns: 1fr; }
+    .side{ min-height: unset; }
+  }
   @media (max-width: 980px){
     .grid{ grid-template-columns: 1fr; }
     .tiles{ grid-template-columns: 1fr; }
     .team{ min-width: 140px; }
     .score .big{ font-size:2.6rem; }
+    .shot{ grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -469,7 +558,7 @@
     <div class="home-sub">Bienvenido a la experiencia exclusiva Valencia Basket. Elige tu experiencia.</div>
 
     <div class="buttons">
-      <a href="#" class="btn btn-networking">Networking</a>
+      <a href="#" class="btn btn-networking" id="openNetworking">Networking</a>
       <a href="#" class="btn btn-highlights" id="openDashboard">Resumen del Partido</a>
       <a href="https://www.valenciabasket.com/ca/business-club" target="_blank" class="btn btn-business">Business Club</a>
     </div>
@@ -480,13 +569,12 @@
 
 <!-- ========== DASHBOARD VIEW ========== -->
 <section class="view hidden" id="dashView">
-  <div class="dash-wrap">
-
+  <div class="wrap">
     <div class="topbar">
       <div class="brand">
         <div class="logo">
-          <!-- Pon el logo aquí (archivo en la misma carpeta) -->
-          <img src="valencia-basket-logo.png" alt="Valencia Basket" onerror="this.style.display='none'; this.parentElement.textContent='VB'; this.parentElement.style.fontWeight='900'; this.parentElement.style.color='white';">
+          <img src="valencia-basket-logo.png" alt="Valencia Basket"
+               onerror="this.style.display='none'; this.parentElement.textContent='VB';">
         </div>
         <div>
           <h2>Match Dashboard <span>VIP Experience</span></h2>
@@ -497,32 +585,26 @@
         <div class="chip">Liga: ACB (Demo)</div>
         <div class="chip">Duración: 40:00</div>
         <div class="chip">Asistencia: 7.450</div>
-        <button class="back" id="backHome">← Volver</button>
+        <button class="back" id="backHome1">← Volver</button>
       </div>
     </div>
 
     <div class="grid">
-      <!-- LEFT: SCORE + QUARTERS + TILES -->
       <div class="card">
         <div class="card-h">
           <h3>Resumen del partido</h3>
           <small>La Fonteta · 20:30 · (Datos inventados)</small>
         </div>
         <div class="card-b">
-
           <div class="scoreboard">
             <div class="team">
               <div class="name">Valencia Basket</div>
               <div class="meta">Récord: 16-9 · Local</div>
               <div class="win-pill">VICTORIA · +6</div>
             </div>
-
-            <div class="score" aria-label="Marcador">
-              <div class="big">92</div>
-              <div class="sep">—</div>
-              <div class="big" style="opacity:.85;">86</div>
+            <div class="score">
+              <div class="big">92</div><div class="sep">—</div><div class="big" style="opacity:.85;">86</div>
             </div>
-
             <div class="team" style="text-align:right;">
               <div class="name" style="opacity:.9;">Rival (Demo)</div>
               <div class="meta">Récord: 14-11 · Visitante</div>
@@ -530,7 +612,7 @@
             </div>
           </div>
 
-          <table class="quarters" aria-label="Marcador por cuartos">
+          <table class="quarters">
             <thead>
               <tr>
                 <th style="text-align:left;">Equipo</th>
@@ -568,11 +650,9 @@
               <div class="sub">Parcial 12–4 final</div>
             </div>
           </div>
-
         </div>
       </div>
 
-      <!-- RIGHT: ADVANCED STATS -->
       <div class="card">
         <div class="card-h">
           <h3>Estadísticas</h3>
@@ -637,7 +717,6 @@
       </div>
     </div>
 
-    <!-- BOTTOM: SHOT CHART + NOTES -->
     <div class="card">
       <div class="card-h">
         <h3>Highlights · Visual</h3>
@@ -645,8 +724,7 @@
       </div>
       <div class="card-b">
         <div class="shot">
-          <div class="court" aria-label="Mapa de tiro (demo)">
-            <!-- Dots (inventados) -->
+          <div class="court">
             <div class="dot" style="left:18%; top:35%"></div>
             <div class="dot" style="left:28%; top:62%"></div>
             <div class="dot" style="left:46%; top:48%"></div>
@@ -660,7 +738,7 @@
           <div class="note">
             <b>Resumen rápido</b><br><br>
             Valencia Basket controla el ritmo desde el Q2 y remata en el Q4 con defensa fuerte y
-            transiciones rápidas. <br><br>
+            transiciones rápidas.<br><br>
             <b>Claves (demo):</b> 41% en triples, 21 asistencias, solo 9 pérdidas y un cierre final con parcial 12–4.
             <br><br>
             <b>Tiempo efectivo:</b> 1h 52m (evento) · <b>Juego:</b> 40:00 · <b>Timeouts:</b> 7
@@ -672,33 +750,204 @@
   </div>
 </section>
 
+<!-- ========== NETWORKING VIEW ========== -->
+<section class="view hidden" id="netView">
+  <div class="wrap">
+
+    <div class="topbar">
+      <div class="brand">
+        <div class="logo">
+          <img src="valencia-basket-logo.png" alt="Valencia Basket"
+               onerror="this.style.display='none'; this.parentElement.textContent='VB';">
+        </div>
+        <div>
+          <h2>Networking VIP <span>Matchmaking</span></h2>
+        </div>
+      </div>
+
+      <div class="top-actions">
+        <div class="chip" id="netCount">Perfiles: 4</div>
+        <button class="back" id="backHome2">← Volver</button>
+      </div>
+    </div>
+
+    <div class="net-layout">
+      <!-- Left: card -->
+      <div class="card" style="background: rgba(0,0,0,.28);">
+        <div class="card-h">
+          <h3>Descubre perfiles</h3>
+          <small>Pasar · Conectar</small>
+        </div>
+        <div class="card-b net-card-wrap">
+          <div id="netCardHost"></div>
+        </div>
+      </div>
+
+      <!-- Right: saved -->
+      <div class="side">
+        <div class="side-h">
+          <h3>Conexiones</h3>
+          <small>Perfiles conectados</small>
+        </div>
+        <div class="side-b" id="savedList">
+          <div class="empty" id="emptySaved">
+            Aún no has conectado con nadie.<br><br>
+            Pulsa <b>Conectar</b> para guardar el perfil aquí.
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <script>
+  // View routing
   const homeView = document.getElementById('homeView');
   const dashView = document.getElementById('dashView');
-  const openDashboard = document.getElementById('openDashboard');
-  const backHome = document.getElementById('backHome');
+  const netView  = document.getElementById('netView');
 
-  function showDashboard(){
+  const openDashboard  = document.getElementById('openDashboard');
+  const openNetworking = document.getElementById('openNetworking');
+
+  const backHome1 = document.getElementById('backHome1');
+  const backHome2 = document.getElementById('backHome2');
+
+  function show(view){
     homeView.classList.add('hidden');
-    dashView.classList.remove('hidden');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-
-  function showHome(){
     dashView.classList.add('hidden');
-    homeView.classList.remove('hidden');
+    netView.classList.add('hidden');
+    view.classList.remove('hidden');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  openDashboard.addEventListener('click', (e) => {
-    e.preventDefault();
-    showDashboard();
-  });
+  openDashboard.addEventListener('click', (e)=>{ e.preventDefault(); show(dashView); });
+  openNetworking.addEventListener('click', (e)=>{ e.preventDefault(); show(netView); });
+  backHome1.addEventListener('click', (e)=>{ e.preventDefault(); show(homeView); });
+  backHome2.addEventListener('click', (e)=>{ e.preventDefault(); show(homeView); });
 
-  backHome.addEventListener('click', (e) => {
-    e.preventDefault();
-    showHome();
-  });
+  // Networking (simple)
+  const profiles = [
+    {
+      name:"María Rodríguez",
+      company:"Adecua Branding",
+      focus:"Buscando alianzas estratégicas y colaboraciones en eventos corporativos.",
+      tags:["Alianzas","Eventos","Branding"]
+    },
+    {
+      name:"Javier Martínez",
+      company:"Grupo Logopost",
+      focus:"Interesado en acuerdos B2B y expansión comercial en Valencia.",
+      tags:["B2B","Ventas","Operaciones"]
+    },
+    {
+      name:"Laura Sánchez",
+      company:"Mediterranean Ventures",
+      focus:"Analizando oportunidades de inversión en empresas con crecimiento.",
+      tags:["Inversión","SaaS","Growth"]
+    },
+    {
+      name:"Carlos Pérez",
+      company:"HealthCore",
+      focus:"Buscando partners tecnológicos para proyectos en sector salud.",
+      tags:["Salud","Tech","Partners"]
+    }
+  ];
+
+  let idx = 0;
+  const host = document.getElementById('netCardHost');
+  const savedList = document.getElementById('savedList');
+  const emptySaved = document.getElementById('emptySaved');
+  const netCount = document.getElementById('netCount');
+
+  function initials(full){
+    const parts = full.split(' ').filter(Boolean);
+    const a = parts[0]?.[0] || 'V';
+    const b = parts[1]?.[0] || 'B';
+    return (a+b).toUpperCase();
+  }
+
+  function renderNet(){
+    netCount.textContent = `Perfiles: ${Math.max(0, profiles.length - idx)}`;
+
+    if(idx >= profiles.length){
+      host.innerHTML = `
+        <div class="net-card" style="align-items:center; justify-content:center; text-align:center;">
+          <div>
+            <div style="font-weight:900; font-size:1.15rem;">No hay más perfiles</div>
+            <div style="margin-top:10px; color:rgba(255,255,255,.7); font-weight:700;">
+              Vuelve más tarde para nuevas conexiones.
+            </div>
+          </div>
+        </div>
+      `;
+      return;
+    }
+
+    const p = profiles[idx];
+    host.innerHTML = `
+      <div class="net-card" id="activeNetCard">
+        <div>
+          <div class="net-head">
+            <div class="net-avatar">${initials(p.name)}</div>
+            <div>
+              <div class="net-name">${p.name}</div>
+              <div class="net-company">${p.company}</div>
+            </div>
+          </div>
+
+          <div class="net-focus">${p.focus}</div>
+
+          <div class="net-meta">
+            ${p.tags.map(t=>`<div class="net-pill">${t}</div>`).join('')}
+          </div>
+        </div>
+
+        <div class="net-actions">
+          <button class="net-btn net-pass" id="btnPass">Pasar</button>
+          <button class="net-btn net-connect" id="btnConnect">Conectar</button>
+        </div>
+      </div>
+    `;
+
+    document.getElementById('btnPass').addEventListener('click', passProfile);
+    document.getElementById('btnConnect').addEventListener('click', connectProfile);
+  }
+
+  function animateOut(x){
+    const card = document.getElementById('activeNetCard');
+    if(!card) return;
+    card.style.transform = `translateX(${x}px) rotate(${x>0?6:-6}deg)`;
+    card.style.opacity = '0';
+  }
+
+  function passProfile(){
+    animateOut(-420);
+    setTimeout(()=>{
+      idx++;
+      renderNet();
+    }, 280);
+  }
+
+  function connectProfile(){
+    const p = profiles[idx];
+    animateOut(420);
+
+    // add to sidebar
+    if(emptySaved) emptySaved.remove();
+
+    const item = document.createElement('div');
+    item.className = 'saved';
+    item.innerHTML = `<b>${p.name}</b><span>${p.company}</span>`;
+    savedList.prepend(item);
+
+    setTimeout(()=>{
+      idx++;
+      renderNet();
+    }, 280);
+  }
+
+  renderNet();
 </script>
 
 </body>
