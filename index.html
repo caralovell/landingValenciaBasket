@@ -1,141 +1,705 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>VIP Experience | Valencia Basket</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+  * { margin:0; padding:0; box-sizing:border-box; }
+  :root{
+    --orange-1:#ff6a00;
+    --orange-2:#ff7f1f;
+    --orange-3:#ff5500;
+    --black-1:#0b0b0f;
+    --black-2:#14141a;
+    --white: #ffffff;
+    --muted: rgba(255,255,255,.82);
+    --muted2: rgba(255,255,255,.65);
+    --glass: rgba(0,0,0,.35);
+    --border: rgba(255,255,255,.14);
+    --shadow: 0 18px 45px rgba(0,0,0,.45);
+  }
 
-body{
+  body{
     font-family:'Montserrat', sans-serif;
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    color:white;
-
-    /* Degradado corporativo */
+    min-height:100vh;
+    color: var(--white);
     background: linear-gradient(135deg, #ff7a00 0%, #1a1a1f 60%, #0b0b0f 100%);
-}
+    overflow-x:hidden;
+  }
 
-.container{
+  .view{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding: 32px 16px;
+  }
+  .hidden{ display:none; }
+
+  /* ---------- HOME ---------- */
+  .home-wrap{
+    width:min(1100px, 94vw);
     text-align:center;
-    max-width:1000px;
-    padding:60px;
-}
-
-h1{
+    padding: 44px 26px 30px;
+  }
+  .home-title{
     font-size:2.8rem;
     font-weight:800;
     letter-spacing:1px;
-}
-
-p{
+  }
+  .home-sub{
     font-size:1.15rem;
     margin-top:15px;
     margin-bottom:50px;
-    opacity:0.9;
-}
-
-.buttons{
+    opacity:.9;
+  }
+  .buttons{
     display:flex;
     gap:25px;
     justify-content:center;
     flex-wrap:wrap;
-}
-
-.btn{
+  }
+  .btn{
     text-decoration:none;
     padding:22px 38px;
-    font-size:1.1rem;
-    font-weight:700;
+    font-size:1.08rem;
+    font-weight:800;
     border-radius:16px;
-    transition: all 0.3s ease;
+    transition: all .25s ease;
     min-width:260px;
     text-align:center;
     color:white;
-    box-shadow:0 15px 35px rgba(0,0,0,0.4);
-}
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(255,255,255,.10);
+  }
+  .btn:hover{ transform: translateY(-6px); }
 
-/* Tonos distintos de naranja */
+  .btn-networking{ background: linear-gradient(135deg, var(--orange-1), #ff8c1a); }
+  .btn-highlights{ background: linear-gradient(135deg, var(--orange-2), #ff9f40); }
+  .btn-business{ background: linear-gradient(135deg, var(--orange-3), #ff7300); }
 
-.btn-networking{
-    background: linear-gradient(135deg, #ff6a00, #ff8c1a);
-}
-
-.btn-networking:hover{
-    transform:translateY(-6px);
-    box-shadow:0 25px 50px rgba(255,106,0,0.5);
-}
-
-.btn-highlights{
-    background: linear-gradient(135deg, #ff7f1f, #ff9f40);
-}
-
-.btn-highlights:hover{
-    transform:translateY(-6px);
-    box-shadow:0 25px 50px rgba(255,127,31,0.5);
-}
-
-.btn-business{
-    background: linear-gradient(135deg, #ff5500, #ff7300);
-}
-
-.btn-business:hover{
-    transform:translateY(-6px);
-    box-shadow:0 25px 50px rgba(255,85,0,0.5);
-}
-
-.footer{
+  .home-footer{
     margin-top:60px;
-    font-size:0.9rem;
-    opacity:0.75;
-}
+    font-size:.9rem;
+    opacity:.75;
+  }
 
-@media(max-width:768px){
-    h1{
-        font-size:2rem;
-    }
+  /* ---------- DASHBOARD ---------- */
+  .dash-wrap{
+    width:min(1200px, 94vw);
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+  }
 
-    .btn{
-        min-width:220px;
-        padding:18px 25px;
-    }
-}
+  .topbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    padding: 14px 16px;
+    border-radius:18px;
+    background: rgba(0,0,0,.30);
+    border: 1px solid rgba(255,255,255,.12);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
 
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    min-width: 230px;
+  }
+  .logo{
+    width:38px;
+    height:38px;
+    border-radius:10px;
+    background: rgba(255,255,255,.10);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    border: 1px solid rgba(255,255,255,.16);
+  }
+  .logo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+  }
+  .brand h2{
+    font-size:1rem;
+    font-weight:800;
+    letter-spacing:.6px;
+    text-transform:uppercase;
+    line-height:1.1;
+  }
+  .brand span{
+    display:block;
+    font-size:.82rem;
+    font-weight:600;
+    color: var(--muted2);
+    margin-top:2px;
+    letter-spacing:.2px;
+    text-transform:none;
+  }
+
+  .top-actions{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+  }
+  .chip{
+    padding:10px 12px;
+    border-radius:999px;
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.12);
+    color: var(--muted);
+    font-weight:700;
+    font-size:.88rem;
+  }
+  .back{
+    cursor:pointer;
+    padding:10px 14px;
+    border-radius:999px;
+    border: 1px solid rgba(255,255,255,.14);
+    background: rgba(0,0,0,.30);
+    color: white;
+    font-weight:800;
+    font-size:.88rem;
+    transition: transform .2s ease, background .2s ease;
+  }
+  .back:hover{ transform: translateY(-2px); background: rgba(0,0,0,.45); }
+
+  .grid{
+    display:grid;
+    grid-template-columns: 1.25fr .75fr;
+    gap:16px;
+  }
+
+  .card{
+    border-radius:22px;
+    background: rgba(0,0,0,.32);
+    border: 1px solid rgba(255,255,255,.12);
+    box-shadow: 0 18px 45px rgba(0,0,0,.35);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    overflow:hidden;
+  }
+
+  .card-h{
+    padding:16px 18px 10px;
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    gap:10px;
+  }
+  .card-h h3{
+    font-size:1.05rem;
+    font-weight:800;
+    letter-spacing:.4px;
+  }
+  .card-h small{
+    color: var(--muted2);
+    font-weight:700;
+  }
+  .card-b{ padding: 14px 18px 18px; }
+
+  /* Scoreboard */
+  .scoreboard{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    padding: 4px 0 14px;
+  }
+  .team{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+    min-width: 180px;
+  }
+  .team .name{
+    font-weight:800;
+    letter-spacing:.2px;
+    color: var(--muted);
+  }
+  .team .meta{
+    font-size:.9rem;
+    color: var(--muted2);
+    font-weight:600;
+  }
+  .score{
+    display:flex;
+    align-items:baseline;
+    gap:12px;
+    font-weight:900;
+    letter-spacing:1px;
+  }
+  .score .big{
+    font-size:3.1rem;
+    line-height:1;
+  }
+  .score .sep{
+    font-size:1.7rem;
+    opacity:.8;
+  }
+  .win-pill{
+    margin-top:10px;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:10px 12px;
+    border-radius:999px;
+    background: linear-gradient(135deg, rgba(255,106,0,.95), rgba(255,138,42,.85));
+    box-shadow: 0 16px 45px rgba(255,106,0,.18);
+    font-weight:900;
+    letter-spacing:.4px;
+  }
+
+  /* Quarter table */
+  .quarters{
+    width:100%;
+    border-collapse:collapse;
+    overflow:hidden;
+    border-radius:16px;
+    border:1px solid rgba(255,255,255,.10);
+  }
+  .quarters th, .quarters td{
+    padding:10px 12px;
+    text-align:center;
+    font-weight:700;
+    font-size:.92rem;
+  }
+  .quarters thead th{
+    background: rgba(255,255,255,.06);
+    color: var(--muted);
+  }
+  .quarters tbody tr{
+    background: rgba(0,0,0,.18);
+  }
+  .quarters tbody tr + tr td{
+    border-top:1px solid rgba(255,255,255,.08);
+  }
+  .tag-home{
+    text-align:left !important;
+    color: var(--muted);
+    font-weight:900;
+  }
+  .tag-away{
+    text-align:left !important;
+    color: rgba(255,255,255,.78);
+    font-weight:900;
+  }
+
+  /* Stat tiles */
+  .tiles{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:12px;
+  }
+  .tile{
+    padding:14px 14px 12px;
+    border-radius:18px;
+    background: rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.10);
+  }
+  .tile .k{
+    font-size:.82rem;
+    color: var(--muted2);
+    font-weight:800;
+    letter-spacing:.3px;
+    text-transform:uppercase;
+  }
+  .tile .v{
+    margin-top:8px;
+    font-size:1.55rem;
+    font-weight:900;
+  }
+  .tile .sub{
+    margin-top:6px;
+    font-size:.85rem;
+    color: rgba(255,255,255,.70);
+    font-weight:700;
+  }
+
+  /* Bars */
+  .bars{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+  .bar{
+    display:grid;
+    grid-template-columns: 110px 1fr 70px;
+    gap:10px;
+    align-items:center;
+  }
+  .bar label{
+    color: var(--muted2);
+    font-weight:800;
+    font-size:.9rem;
+  }
+  .track{
+    height:12px;
+    border-radius:999px;
+    background: rgba(255,255,255,.10);
+    border: 1px solid rgba(255,255,255,.10);
+    overflow:hidden;
+    position:relative;
+  }
+  .fill{
+    height:100%;
+    width: 60%;
+    border-radius:999px;
+    background: linear-gradient(135deg, var(--orange-1), #ff9a3c);
+    box-shadow: 0 10px 25px rgba(255,106,0,.20);
+  }
+  .fill.alt{ background: linear-gradient(135deg, var(--orange-2), #ffb15a); }
+  .fill.alt2{ background: linear-gradient(135deg, var(--orange-3), #ff8a2a); }
+
+  .bar span{
+    text-align:right;
+    font-weight:900;
+    color: var(--muted);
+  }
+
+  /* Leaders */
+  .leaders{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .leader{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    padding:12px 12px;
+    border-radius:16px;
+    background: rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.10);
+  }
+  .leader .who{
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+  }
+  .leader .who b{
+    font-weight:900;
+    letter-spacing:.2px;
+  }
+  .leader .who small{
+    color: var(--muted2);
+    font-weight:700;
+  }
+  .leader .num{
+    font-weight:900;
+    font-size:1.35rem;
+  }
+
+  /* Mini shot chart fake */
+  .shot{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:12px;
+    align-items:stretch;
+  }
+  .court{
+    border-radius:18px;
+    background:
+      radial-gradient(circle at 50% 60%, rgba(255,106,0,.22), transparent 55%),
+      linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+    border:1px solid rgba(255,255,255,.10);
+    position:relative;
+    overflow:hidden;
+    min-height: 190px;
+  }
+  .court::after{
+    content:"";
+    position:absolute;
+    inset:14px;
+    border:1px dashed rgba(255,255,255,.18);
+    border-radius:14px;
+  }
+  .dot{
+    width:10px; height:10px;
+    border-radius:50%;
+    position:absolute;
+    background: var(--orange-1);
+    box-shadow: 0 10px 25px rgba(255,106,0,.35);
+    opacity:.95;
+  }
+  .dot.miss{
+    background: rgba(255,255,255,.45);
+    box-shadow:none;
+    opacity:.85;
+  }
+
+  .note{
+    border-radius:18px;
+    background: rgba(0,0,0,.20);
+    border:1px solid rgba(255,255,255,.10);
+    padding:14px;
+    color: var(--muted);
+    font-weight:700;
+    line-height:1.35;
+  }
+  .note b{ color:#fff; }
+
+  @media (max-width: 980px){
+    .grid{ grid-template-columns: 1fr; }
+    .tiles{ grid-template-columns: 1fr; }
+    .team{ min-width: 140px; }
+    .score .big{ font-size:2.6rem; }
+  }
 </style>
 </head>
+
 <body>
 
-<div class="container">
-    <h1>VIP Experience</h1>
-    <p>Bienvenido a la experiencia exclusiva Valencia Basket. Elige tu experiencia.</p>
+<!-- ========== HOME VIEW ========== -->
+<section class="view" id="homeView">
+  <div class="home-wrap">
+    <div class="home-title">VIP Experience</div>
+    <div class="home-sub">Bienvenido a la experiencia exclusiva Valencia Basket. Elige tu experiencia.</div>
 
     <div class="buttons">
-        <a href="#" class="btn btn-networking">
-            Networking
-        </a>
-
-        <a href="#" class="btn btn-highlights">
-            Resumen del Partido
-        </a>
-
-        <a href="https://www.valenciabasket.com/ca/business-club" target="_blank" class="btn btn-business">
-            Business Club
-        </a>
+      <a href="#" class="btn btn-networking">Networking</a>
+      <a href="#" class="btn btn-highlights" id="openDashboard">Resumen del Partido</a>
+      <a href="https://www.valenciabasket.com/ca/business-club" target="_blank" class="btn btn-business">Business Club</a>
     </div>
 
-    <div class="footer">
-        Valencia Basket Club · Experiencia Corporativa
+    <div class="home-footer">Valencia Basket Club · Experiencia Corporativa</div>
+  </div>
+</section>
+
+<!-- ========== DASHBOARD VIEW ========== -->
+<section class="view hidden" id="dashView">
+  <div class="dash-wrap">
+
+    <div class="topbar">
+      <div class="brand">
+        <div class="logo">
+          <!-- Pon el logo aquí (archivo en la misma carpeta) -->
+          <img src="valencia-basket-logo.png" alt="Valencia Basket" onerror="this.style.display='none'; this.parentElement.textContent='VB'; this.parentElement.style.fontWeight='900'; this.parentElement.style.color='white';">
+        </div>
+        <div>
+          <h2>Match Dashboard <span>VIP Experience</span></h2>
+        </div>
+      </div>
+
+      <div class="top-actions">
+        <div class="chip">Liga: ACB (Demo)</div>
+        <div class="chip">Duración: 40:00</div>
+        <div class="chip">Asistencia: 7.450</div>
+        <button class="back" id="backHome">← Volver</button>
+      </div>
     </div>
-</div>
+
+    <div class="grid">
+      <!-- LEFT: SCORE + QUARTERS + TILES -->
+      <div class="card">
+        <div class="card-h">
+          <h3>Resumen del partido</h3>
+          <small>La Fonteta · 20:30 · (Datos inventados)</small>
+        </div>
+        <div class="card-b">
+
+          <div class="scoreboard">
+            <div class="team">
+              <div class="name">Valencia Basket</div>
+              <div class="meta">Récord: 16-9 · Local</div>
+              <div class="win-pill">VICTORIA · +6</div>
+            </div>
+
+            <div class="score" aria-label="Marcador">
+              <div class="big">92</div>
+              <div class="sep">—</div>
+              <div class="big" style="opacity:.85;">86</div>
+            </div>
+
+            <div class="team" style="text-align:right;">
+              <div class="name" style="opacity:.9;">Rival (Demo)</div>
+              <div class="meta">Récord: 14-11 · Visitante</div>
+              <div class="meta">Últimos 5: W-L-W-L-W</div>
+            </div>
+          </div>
+
+          <table class="quarters" aria-label="Marcador por cuartos">
+            <thead>
+              <tr>
+                <th style="text-align:left;">Equipo</th>
+                <th>Q1</th><th>Q2</th><th>Q3</th><th>Q4</th><th>Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="tag-home">Valencia Basket</td>
+                <td>24</td><td>22</td><td>18</td><td>28</td><td><b>92</b></td>
+              </tr>
+              <tr>
+                <td class="tag-away">Rival (Demo)</td>
+                <td>21</td><td>24</td><td>20</td><td>21</td><td><b>86</b></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div style="height:14px"></div>
+
+          <div class="tiles">
+            <div class="tile">
+              <div class="k">Eficiencia</div>
+              <div class="v">+8.4</div>
+              <div class="sub">OfRtg 114 · DefRtg 106</div>
+            </div>
+            <div class="tile">
+              <div class="k">Racha</div>
+              <div class="v">W 3</div>
+              <div class="sub">3 victorias seguidas</div>
+            </div>
+            <div class="tile">
+              <div class="k">Momentos clave</div>
+              <div class="v">Q4</div>
+              <div class="sub">Parcial 12–4 final</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- RIGHT: ADVANCED STATS -->
+      <div class="card">
+        <div class="card-h">
+          <h3>Estadísticas</h3>
+          <small>Team overview</small>
+        </div>
+        <div class="card-b">
+          <div class="bars">
+            <div class="bar">
+              <label>TS%</label>
+              <div class="track"><div class="fill" style="width:64%"></div></div>
+              <span>64%</span>
+            </div>
+            <div class="bar">
+              <label>3P%</label>
+              <div class="track"><div class="fill alt" style="width:41%"></div></div>
+              <span>41%</span>
+            </div>
+            <div class="bar">
+              <label>REB</label>
+              <div class="track"><div class="fill alt2" style="width:56%"></div></div>
+              <span>38</span>
+            </div>
+            <div class="bar">
+              <label>AST</label>
+              <div class="track"><div class="fill" style="width:62%"></div></div>
+              <span>21</span>
+            </div>
+            <div class="bar">
+              <label>TO</label>
+              <div class="track"><div class="fill alt" style="width:28%"></div></div>
+              <span>9</span>
+            </div>
+          </div>
+
+          <div style="height:14px"></div>
+
+          <div class="leaders">
+            <div class="leader">
+              <div class="who">
+                <b>MVP (Demo)</b>
+                <small>22 pts · 6 reb · 5 ast</small>
+              </div>
+              <div class="num">+18</div>
+            </div>
+            <div class="leader">
+              <div class="who">
+                <b>Máx. rebotes</b>
+                <small>11 reb · 2 tap</small>
+              </div>
+              <div class="num">11</div>
+            </div>
+            <div class="leader">
+              <div class="who">
+                <b>Triples</b>
+                <small>4/7 · 57%</small>
+              </div>
+              <div class="num">4</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- BOTTOM: SHOT CHART + NOTES -->
+    <div class="card">
+      <div class="card-h">
+        <h3>Highlights · Visual</h3>
+        <small>Shot map (demo) + resumen</small>
+      </div>
+      <div class="card-b">
+        <div class="shot">
+          <div class="court" aria-label="Mapa de tiro (demo)">
+            <!-- Dots (inventados) -->
+            <div class="dot" style="left:18%; top:35%"></div>
+            <div class="dot" style="left:28%; top:62%"></div>
+            <div class="dot" style="left:46%; top:48%"></div>
+            <div class="dot miss" style="left:58%; top:30%"></div>
+            <div class="dot" style="left:66%; top:58%"></div>
+            <div class="dot miss" style="left:78%; top:44%"></div>
+            <div class="dot" style="left:40%; top:72%"></div>
+            <div class="dot" style="left:55%; top:70%"></div>
+          </div>
+
+          <div class="note">
+            <b>Resumen rápido</b><br><br>
+            Valencia Basket controla el ritmo desde el Q2 y remata en el Q4 con defensa fuerte y
+            transiciones rápidas. <br><br>
+            <b>Claves (demo):</b> 41% en triples, 21 asistencias, solo 9 pérdidas y un cierre final con parcial 12–4.
+            <br><br>
+            <b>Tiempo efectivo:</b> 1h 52m (evento) · <b>Juego:</b> 40:00 · <b>Timeouts:</b> 7
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  const homeView = document.getElementById('homeView');
+  const dashView = document.getElementById('dashView');
+  const openDashboard = document.getElementById('openDashboard');
+  const backHome = document.getElementById('backHome');
+
+  function showDashboard(){
+    homeView.classList.add('hidden');
+    dashView.classList.remove('hidden');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function showHome(){
+    dashView.classList.add('hidden');
+    homeView.classList.remove('hidden');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  openDashboard.addEventListener('click', (e) => {
+    e.preventDefault();
+    showDashboard();
+  });
+
+  backHome.addEventListener('click', (e) => {
+    e.preventDefault();
+    showHome();
+  });
+</script>
 
 </body>
 </html>
